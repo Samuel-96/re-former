@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    font-family: system-ui;
+    color: rgb(215, 211, 206);
+    background-color: #222426;
+}
+
+.form form {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 8px;
+}
