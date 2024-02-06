@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   def show
+    @user = User.find(params[:id])
+  end
+
+  def index
+    @users = User.all
   end
 
   def new
@@ -11,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(allow_user_params)
     
     if @user.save
-      redirect_to new_users_path
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,6 +39,6 @@ class UsersController < ApplicationController
   private
 
   def allow_user_params 
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :image)
   end
 end

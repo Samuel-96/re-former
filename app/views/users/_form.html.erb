@@ -1,14 +1,30 @@
 <div class="form">
-    <%= form_with model: @user, method: :patch do |form| %>
-    <%= form.label :username, "Username:" %>
-    <%= form.text_field :username %>
+    <%= form_with model: @user do |form| %>
+        <%= form.label "Profile Photo" %>
+        <%= form.file_field :image, accept: 'image/png, image/gif, image/jpeg' %>
+        <br>
+        <%= form.label :username, "Username:" %>
+        <%= form.text_field :username %>
+        <% @user.errors.full_messages_for(:username).each do |message| %>
+        <div class="error">
+            <%= message %></div>
+        <% end %>
 
-    <%= form.label :password, "Password:" %>
-    <%= form.password_field :password %>
+        <%= form.label :password, "Password:" %>
+        <%= form.password_field :password %>
+        <% @user.errors.full_messages_for(:password).each do |message| %>
+        <div class="error">
+            <%= message %></div>
+        <% end %>
 
-    <%= form.label :email, "Email:" %>
-    <%= form.email_field :email, placeholder: "yourmail@gmail.com" %>
+        <%= form.label :email, "Email:" %>
+        <%= form.email_field :email, placeholder: "yourmail@gmail.com" %>
+        <% @user.errors.full_messages_for(:email).each do |message| %>
+        <div class="error">
+            <%= message %>
+        </div>
+        <% end %>
 
-    <%= form.submit "Update user" %>
+        <%= form.submit "Send" %>
     <% end %>
 </div>
